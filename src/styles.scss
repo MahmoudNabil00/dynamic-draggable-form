@@ -1,0 +1,18 @@
+@use "tailwindcss";
+@use "@angular/material" as mat;
+
+html {
+    @include mat.theme(
+    (
+        color: mat.$azure-palette,
+        typography: Roboto,
+    )
+    );
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.cdk-drop-list-dragging:not(.elements-menu) {
+    border: 2px solid lightgray !important;
+    background-color: lightgray !important;
+}
