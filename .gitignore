@@ -96,6 +96,9 @@ dist
 # Gatsby files
 .cache/
 public
+# But allow specific public files needed for deployment
+!public/_redirects
+!public/favicon.ico
 
 # vuepress build output
 .vuepress/dist

@@ -15,16 +15,5 @@ import { ExportForm } from './services/export-form.service';
   styleUrl: './app.scss'
 })
 export class App {
-  exportFormService = inject(ExportForm);
-  protected title = 'dynamic-form-builder';
-    exportForm(){
-      const formCode = this.exportFormService.generateFormCode();
-      const blob = new Blob([formCode], { type: 'text/plain' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'form.ts';
-      a.click();
 
-  }
 }
