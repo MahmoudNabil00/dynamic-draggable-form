@@ -1,5 +1,6 @@
 @use "tailwindcss";
 @use "@angular/material" as mat;
+@use "./app/themes.css";
 
 html {
     @include mat.theme(
@@ -15,4 +16,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .cdk-drop-list-dragging:not(.elements-menu) {
     border: 2px solid lightgray !important;
     background-color: lightgray !important;
+}
+
+
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 0.3s; /* ⏱ 0.8 seconds */
+  animation-timing-function: ease-in-out;
 }

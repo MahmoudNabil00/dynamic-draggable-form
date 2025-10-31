@@ -1,0 +1,20 @@
+<div (click)="selectField()" class="pt-1 bg-white p-4 rounded-lg border border-gray-200 hover:border-black cursor-pointer "
+      [class]="formService.selectedField()?.id === field().id ? '!border-black' : ''"
+>
+    <div class="flex items-center justify-between mb-1">
+        <span class="text-sm">
+            {{field().type | titlecase}}
+        </span>
+        <button mat-icon-button (click)="deleteField($event)">
+            <mat-icon class="-mr-2">
+                delete
+            </mat-icon>
+        </button>
+    </div>
+    <ng-container 
+    [ngComponentOutlet]="previewComponent()" 
+    [ngComponentOutletInputs]="{
+        field:field()
+    }">    
+    </ng-container>
+</div>

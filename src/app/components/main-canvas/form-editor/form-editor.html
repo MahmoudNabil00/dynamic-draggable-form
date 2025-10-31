@@ -1,9 +1,38 @@
 <div class="p-4">
-  @for(row of formService.rows(); track row.id){
+  @for(row of formService.rows(); track row.id;let index=$index){
   <div
     cdkDropList
-    class="p-5 bg-white rounded-lg border-2 border-dashed border-gray-200"
+    [cdkDropListData]="row.id"
+    style.viewTransitionName="row-{{row.id}}"
+    cdkDropListOrientation="mixed"
+    class="p-5 mb-4 bg-white rounded-lg border-2 border-dashed border-gray-200 relative ps-13"
     (cdkDropListDropped)="onDropInRow($event,row.id)"
-  ></div>
+  >
+    <div class="flex justify-between items-center">
+      <span>Row {{index+1}}</span>
+      @if (formService.rows().length > 1) {
+        <button mat-icon-button (click)="deleteRow(row.id)">
+          <mat-icon>
+            close
+          </mat-icon>
+        </button>
+      }
+    </div>
+    <div class="flex gap-4 flex-wrap">
+      @for(field of row.fields; track field.id){
+        <app-form-field cdkDrag [cdkDragData]="field" class="flex-1" [field]="field" [row]="row" />
+      }@empty {
+        <div class="w-full p-4 border border-dashed border-primary-container rounded">Drag and drop here</div>
+      }
+    </div>
+    <div class="absolute left-0  gap-0 flex flex flex-col top-1/2 -translate-y-1/2 m-1">
+      <button mat-icon-button [disabled]="$first" (click)="moveRowUp(row.id)">
+        <mat-icon>keyboard_arrow_up</mat-icon>
+      </button>
+      <button mat-icon-button [disabled]="$last" (click)="moveRowDown(row.id)">
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </button>
+    </div>
+  </div>
   }
 </div>

@@ -2,7 +2,8 @@
     <h3 class="text-lg font-medium mb-4">Form Elements</h3>
     <div class="flex flex-col gap-4 elements-menu" 
        cdkDropList 
-       cdkDropListSortingDisabled="true"
+       [cdkDropListEnterPredicate]="noDropAllowed"
+       cdkDropListSortingDisabled="true" 
        cdkDropListData="hey-iam-from-form-elements-menu"
     >
         @for (type of fieldTypes; track type.type) {

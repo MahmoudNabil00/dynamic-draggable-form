@@ -9,10 +9,11 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
+    
     {
       provide:MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue:{
-        appearance:'outline',
+        // appearance:'outline',
         subscriptSizing:'dynamic'
       }
     }
